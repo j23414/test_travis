@@ -22,8 +22,13 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
+  # Install nextstrain cli
   - conda install -n base -c conda-forge mamba --yes
   - conda activate base
+  - mamba create -n nextstrain -c bioconda nextstrain-cli --yes
+  - conda activate nextstrain
+  - mamba install -c conda-forge -c bioconda augur auspice nextalign snakemake git --yes
+  - nextstrain check-setup --set-default
 #  - pip3 install git+https://github.com/nextstrain/cli
 #  - nextstrain version
 #  - nextstrain check-setup
